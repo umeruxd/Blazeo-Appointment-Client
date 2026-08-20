@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@blazeo.com/calendar-client": "^1.0.88"
+  }
+}

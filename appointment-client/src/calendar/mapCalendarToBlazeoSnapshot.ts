@@ -42,5 +42,7 @@ export function mapCalendarBOToSnapshot(bo: any) {
     bookingLimit: optionalNumber(bo.bookingLimit),
     createdOn: bo.createdOn ?? null,
     modifiedOn: bo.modifiedOn ?? null,
+    ccEmails: Array.isArray(bo.ccEmail) ? bo.ccEmail.join(",") : (bo.ccEmail || ""),
+    bccEmails: Array.isArray(bo.bccEmail) ? bo.bccEmail.join(",") : (bo.bccEmail || ""),
   };
 }

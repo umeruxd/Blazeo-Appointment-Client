@@ -33,7 +33,7 @@
     "verify:crm-lead-fields-fetch": "npm run build && node scripts/verifyCrmCalendarLeadFieldsFetch.mjs"
   },
   "dependencies": {
-    "@blazeo.com/calendar-client": "^1.0.82",
+    "@blazeo.com/calendar-client": "^1.0.88",
     "mobx": "^6.13.7",
     "mobx-state-tree": "^7.0.2",
     "moment": "^2.30.1"

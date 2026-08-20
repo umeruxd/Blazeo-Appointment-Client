@@ -67,6 +67,8 @@ export type FrontendCalendarView = {
   appointmentLocations: FrontendAppointmentLocation[];
   theme?: { color?: string | null; id?: number | null } | null;
   companyKey?: string | null;
+  ccEmail?: string[] | string;
+  bccEmail?: string[] | string;
 };
 
 function resolveFrontendIsCrm(view: Record<string, unknown>, raw: Record<string, unknown>): boolean {
@@ -290,5 +292,13 @@ export function mapToFrontendCalendarView(
           }
         : null,
     companyKey: pick(view, "companyKey", "CompanyKey") ?? pick(raw, "companyKey", "CompanyKey") ?? null,
+    ccEmail: (() => {
+      const rawCc = pick(view, "ccEmails", "CcEmails") ?? pick(raw, "ccEmails", "CcEmails");
+      return Array.isArray(rawCc) ? rawCc : (typeof rawCc === "string" ? (rawCc ? rawCc.split(",") : []) : []);
+    })(),
+    bccEmail: (() => {
+      const rawBcc = pick(view, "bccEmails", "BccEmails") ?? pick(raw, "bccEmails", "BccEmails");
+      return Array.isArray(rawBcc) ? rawBcc : (typeof rawBcc === "string" ? (rawBcc ? rawBcc.split(",") : []) : []);
+    })(),
   };
 }
